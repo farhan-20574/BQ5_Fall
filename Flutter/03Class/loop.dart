@@ -5,12 +5,12 @@ int count = 0;
 even.forEach((e){
   //print(e);
   if (e>=4){
-    // print(e);
+    print(e);
     count++;
   }
-  // else{
-  //   print("not found");
-  // }
+  else{
+    print("not found");
+  }
 });
   print (count);
 
