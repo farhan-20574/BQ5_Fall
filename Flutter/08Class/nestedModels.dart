@@ -1,0 +1,51 @@
+class Students {
+  int roll;
+  String studentName;
+  List<SubjectsMarks> subjects;
+  
+  SubjectsMarks subjects;
+
+  Students({
+    required this.studentName,
+    required this.roll,
+    required this.subjects,
+  });
+  
+  
+  String markSheetPrint(){
+    
+    return "--Roll# ${roll} Student Name;${studentName} \n Subject: ${subjects.subjectName}, Marks: ${subjects.obtainedMarks}/${subjects.totalMarks}";
+  }
+}
+
+class SubjectsMarks {
+  String subjectName;
+  double totalMarks;
+  double obtainedMarks;
+
+  SubjectsMarks({
+    required this.subjectName,
+    required this.totalMarks,
+    required this.obtainedMarks,
+  });
+  
+}
+
+void main() {
+  List<Students> markSheet = [
+    Students(roll:001,studentName:"Ali",
+    subjects: [
+        SubjectsMarks(subjectName: "English", totalMarks: 100, obtainedMarks: 90),
+        SubjectsMarks(subjectName: "Math", totalMarks: 100, obtainedMarks: 95),
+        SubjectsMarks(subjectName: "Physics", totalMarks: 100, obtainedMarks: 88),
+        SubjectsMarks(subjectName: "Chemistry", totalMarks: 100, obtainedMarks: 92),
+        SubjectsMarks(subjectName: "Biology", totalMarks: 100, obtainedMarks: 85),
+      ],
+  )];
+
+  // Iterate through the list to call the method on each student object
+  markSheet.forEach((student) {
+    print("--------------------------------------");
+    print(student.markSheetPrint());
+  });
+}
