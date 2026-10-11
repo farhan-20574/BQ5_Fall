@@ -9,9 +9,15 @@ class Students {
     required this.subjects,
   });
 
-  SString markSheetPrint(){
+  String markSheetPrint() {
+    String output = "--Roll# $roll Student Name;$studentName \n Subject: ";
     
-    return "--Roll# ${roll} Student Name;${studentName} \n Subject: ${subjects.subjectName}, Marks: ${subjects.obtainedMarks}/${subjects.totalMarks}";
+    // Using forEach to iterate without map or buffer
+    subjects.forEach((s) {
+      output += "\n${s.subjectName}, Marks: ${s.obtainedMarks}/${s.totalMarks}";
+    });
+    
+    return output;
   }
 }
 
