@@ -10,12 +10,19 @@ class Students {
   });
 
   String markSheetPrint() {
-    String output = "--Roll# $roll Student Name;$studentName \n Subject: ";
+    String output = "Roll number: $roll \n Student Name: $studentName ";
     
-    // Using forEach to iterate without map or buffer
+    double totalMarksSum = 0;
+    double obtainedMarksSum = 0;
+
     subjects.forEach((s) {
-      output += "\n${s.subjectName}, Marks: ${s.obtainedMarks}/${s.totalMarks}";
+      output += "\n Subject ${s.subjectName}: Marks: ${s.obtainedMarks}/${s.totalMarks}";
+      totalMarksSum += s.totalMarks;
+      obtainedMarksSum += s.obtainedMarks;
     });
+
+    output += "\n--------------------------------------";
+    output += "\n Grand Total: $obtainedMarksSum / $totalMarksSum";
     
     return output;
   }
@@ -36,7 +43,7 @@ class SubjectsMarks {
 void main() {
   final List<Students> markSheet = [
     Students(
-      roll: 001,
+      roll: 1,
       studentName: "Ali",
       subjects: [
         SubjectsMarks(subjectName: "English", totalMarks: 100, obtainedMarks: 90),
@@ -46,11 +53,22 @@ void main() {
         SubjectsMarks(subjectName: "Biology", totalMarks: 100, obtainedMarks: 85),
       ],
     ),
+    Students(
+      roll: 2,
+      studentName: "Sara",
+      subjects: [
+        SubjectsMarks(subjectName: "English", totalMarks: 100, obtainedMarks: 85),
+        SubjectsMarks(subjectName: "Math", totalMarks: 100, obtainedMarks: 98),
+        SubjectsMarks(subjectName: "Physics", totalMarks: 100, obtainedMarks: 92),
+        SubjectsMarks(subjectName: "Chemistry", totalMarks: 100, obtainedMarks: 92),
+        SubjectsMarks(subjectName: "Biology", totalMarks: 100, obtainedMarks: 92),
+      ],
+    ),
   ];
 
-  // Iterate through the list to call the method on each student object
-  for (final student in markSheet) {
+  markSheet.forEach((student) {
     print("--------------------------------------");
     print(student.markSheetPrint());
-  }
+    print("--------------------------------------");
+  });
 }
