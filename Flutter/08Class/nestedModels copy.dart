@@ -9,14 +9,9 @@ class Students {
     required this.subjects,
   });
 
-  String markSheetPrint() {
-    final buffer = StringBuffer();
-    buffer.writeln("--Roll# $roll Student Name: $studentName");
-    for (var subject in subjects) {
-      buffer.writeln(
-          "  Subject: ${subject.subjectName.padRight(10)}, Marks: ${subject.obtainedMarks}/${subject.totalMarks}");
-    }
-    return buffer.toString();
+  SString markSheetPrint(){
+    
+    return "--Roll# ${roll} Student Name;${studentName} \n Subject: ${subjects.subjectName}, Marks: ${subjects.obtainedMarks}/${subjects.totalMarks}";
   }
 }
 
