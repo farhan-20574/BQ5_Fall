@@ -116,7 +116,7 @@ void main() {
   ];
 
   // Print all shops' sales reports
-  print("========== MALL SALES REPORT ==========");
+  print("========== SHOP SALES REPORT ==========");
 
   mallShops.forEach((shop) {
     print("\n======================================");
